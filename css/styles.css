@@ -3,6 +3,30 @@
     padding: 0;
 }
 
+:root {
+    --accent-color : #7156b1;
+    --accent-color-dimmed: #443974;
+    --background-color: #0f0f12;
+    --background-color-secondary: #8f8a92;
+    --text-color-primary: #ffffff;
+    --text-color-secondary: #c3c4ca;
+
+    /* borders */
+    --border-small: 2px;
+    --border-medium: 4px;
+    --border-large: 8px;
+
+    /* font sizes */
+    --font-size-small: 1.5rem;
+    --font-size-smallish: 2rem;
+    --font-size-medium: 3rem;
+    --font-size-mediumish: 4rem;
+    --font-size-large: 5rem;
+
+    --font-size-xlarge: 8rem;
+    --font-size-jumbo: 10rem;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -39,20 +63,22 @@ body {
     display: grid;
     place-items: center;
     margin: 5px 10px;
-    background: #0f0f12;
+    background: var(--background-color);
     text-align: center;
     flex-grow: 1;
     transition: all 0.3s ease;
 
     border-radius: 10px;
-    color: #c3c4ca;
-    font-size: 3.0vh;
+    color: var(--text-color-secondary);
+    font-size: var(--font-size-medium);
     text-decoration: none;
     font-family: 'Spectral';
+    border-bottom: transparent var(--border-small) solid;
+    
 }
 
 .wrapper .side .stick-container .section_clone:hover {
-    border-bottom: #8a8c92 2px solid;
+    border-bottom: var(--accent-color) 2px solid;
 }
 
 
@@ -71,7 +97,7 @@ body {
     min-height: 100vh;
     height: auto;
     margin: 10px 10px;
-    background: #0f0f12;
+    background: var(--background-color);
     color: #ffffff;
     outline: 0px solid #fff;
     border-radius: 10px;
@@ -84,7 +110,7 @@ body {
 
 .text-logo {
     font-family: 'Instrument Serif', serif;
-    font-size: 8rem;
+    font-size: var(--font-size-xlarge);
     font-weight: 400;
     font-style: normal;
     color: #fff;
@@ -101,7 +127,7 @@ body {
     font-family: 'Spectral';
     font-weight: normal;
     font-size: 3vh;
-    color: #c3c4ca;
+    color: var(--text-color-secondary);
 }
 
 /* contact form */
@@ -126,21 +152,38 @@ textarea {
     border: none;
     border-radius: 5px;
 
-    background-color: #0f0f12;
+    background-color: var(--background-color);
     margin-bottom: 3.5%;
-    border-bottom: #c3c4ca solid 1px;
+    border: transparent solid var(--border-medium);
+    border-bottom: var(--text-color-secondary) solid var(--border-small);
+
+    transition: border-color 0.3s ease-in-out;
 }
 
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border: var(--accent-color) solid var(--border-small);
+    outline: none;
+}
+
+
+
 .form-button {
+    font-family: 'Spectral';
     margin-top: 3.5%;
     background-color: transparent;
-    border: solid 1px #c3c4ca;
+    border: solid var(--border-small) var(--text-color-secondary);
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: border 0.1s ease-in-out; /* Add this line */
 }
 
 .form-button:hover {
-    background-color: #232328;
-    border-color: #c3c4ca;
+    border: solid var(--border-small) var(--accent-color);
+}
+
+.form-button:active {
+    background-color: var(--accent-color-dimmed);
 }
