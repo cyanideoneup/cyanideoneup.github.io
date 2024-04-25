@@ -431,6 +431,14 @@ section {
   background-color: var(--background-color);
 }
 
+.contact-container {
+
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .contact .info {
   padding: 30px;
   background: var(--background-color);
