@@ -578,9 +578,12 @@ section {
   background-color: transparent;
   outline: none;
   border-radius: 10px;
+  /* color: var(--text-color-primary); */
 }
 
-
+.contact .php-email-form .form-group textarea {
+  color:var(--text-color-primary)
+}
 
 .contact .php-email-form .error-message {
   display: none;
@@ -636,6 +639,11 @@ section {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
+  color: var(--text-color-primary);
+}
+
+.contact .php-email-form input::placeholder {
+  color: var(--text-color-secondary)
 }
 
 .contact .php-email-form input {
