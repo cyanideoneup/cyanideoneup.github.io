@@ -16,9 +16,7 @@ jobs:
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://cyanone.art
-          destination: |
-            dist
-            !dist/**/*.md  
+          destination: screenshot.png
           width: 800
           full-page: false
           delay: 5
