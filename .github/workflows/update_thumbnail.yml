@@ -13,12 +13,14 @@ jobs:
         uses: actions/checkout@v4 
 
       - name: Take screenshot
-        uses: karol-brejna-i/webpage-screenshot-action@v1.1.2 
+        uses: swinton/screenshot-website@v1.x
         with:
-          url: 'https://cyanone.art/'
-          output: 'assets/img/screenshot.png'
-          mode: 'page'
-          waitUntil: 'networkidle0'
+          source: https://github.com/swinton/screenshot-website
+          destination: assets/img/screenshot.png
+          width: 1200
+          height: 630
+          full-page: false
+          wait-for-selector: 'img'
 
       - name: Update og:image in index.html
         run: |
