@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 
 
+      - name: List directory contents
+        run: ls -la
+
       - name: Take screenshot
         uses: swinton/screenshot-website@v1.x
         with:
