@@ -12,14 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 
 
-      - name: List directory contents
-        run: ls -la assets
-
       - name: Take screenshot
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://cyanone.art
-          destination: assets/img/screenshot.png
+          destination: assets/img
           width: 800
           full-page: false
           delay: 5
