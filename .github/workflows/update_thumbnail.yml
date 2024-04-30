@@ -2,7 +2,9 @@ name: Update Website Screenshot
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 * * * *' # Runs every hour
+  push:
+
 
 jobs:
   update-screenshot:
