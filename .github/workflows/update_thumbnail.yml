@@ -2,19 +2,18 @@ name: Update Website Screenshot
 
 on:
   schedule:
-    - cron: '0 * * * *' # Runs every hour
+    - cron: '0 * * * *'
   push:
-
 
 jobs:
   update-screenshot:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4 
 
       - name: Take screenshot
-        uses: karol-brejna-i/webpage-screenshot-action@v1.1.2
+        uses: karol-brejna-i/webpage-screenshot-action@v1.1.2 
         with:
           url: 'https://cyanone.art/'
           output: 'assets/img/screenshot.png'
