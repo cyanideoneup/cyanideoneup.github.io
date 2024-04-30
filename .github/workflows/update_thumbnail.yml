@@ -20,11 +20,15 @@ jobs:
           width: 800
           full-page: false
           delay: 5
-      
-      - name: Copy Screenshot
-        run: cp ${{ steps.screenshot-generator.outputs.path }} .
 
-          
+
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: screenshot.png
+          path: assets/img
+
+
       - name: Update og:image in index.html
         run: |
           sed -i 's|<meta property="og:image" content=".*"|<meta property="og:image" content="https://cyanone.art/assets/img/screenshot.png"|' index.html
