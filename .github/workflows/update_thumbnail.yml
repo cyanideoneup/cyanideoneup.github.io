@@ -12,15 +12,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 
 
-      - name: Wait for images to load
-        run: sleep 5s 
-
       - name: Take screenshot
         uses: karol-brejna-i/webpage-screenshot-action@v1.1.2 
         with:
           url: 'https://cyanone.art/'
           output: 'assets/img/screenshot.png'
           mode: 'page'
+          waitUntil: 'networkidle0'
 
       - name: Update og:image in index.html
         run: |
