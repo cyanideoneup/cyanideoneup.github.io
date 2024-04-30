@@ -20,7 +20,12 @@ jobs:
           width: 800
           full-page: false
           delay: 5
+      
+      - name: Move screenshot to assets/img
+        run: |
+          mv screenshot.png assets/img/
 
+          
       - name: Update og:image in index.html
         run: |
           sed -i 's|<meta property="og:image" content=".*"|<meta property="og:image" content="https://cyanone.art/assets/img/screenshot.png"|' index.html
