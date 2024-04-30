@@ -18,15 +18,9 @@ jobs:
         with:
           source: https://cyanone.art
           destination: screenshot.png
-          width: 800
+          width: 600
           full-page: false
           delay: 5
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: screenshot
-          path: screenshot.png
 
       - name: Configure git
         run: |
