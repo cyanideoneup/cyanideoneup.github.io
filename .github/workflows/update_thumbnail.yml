@@ -16,11 +16,11 @@ jobs:
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://github.com/swinton/screenshot-website
-          destination: assets/img/screenshot.png
-          width: 1200
-          height: 630
+          destination: screenshot.png
+          path: assets/img
+          width: 800
           full-page: false
-          wait-for-selector: 'img'
+          delay: 5
 
       - name: Update og:image in index.html
         run: |
