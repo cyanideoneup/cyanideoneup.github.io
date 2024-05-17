@@ -43,6 +43,21 @@
 </script>
 
 
+  <!-- GA Event Tracking -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-click-tag]').forEach(function (element) {
+        element.addEventListener('click', function () {
+          const tag = element.getAttribute('data-click-tag');
+          gtag('event', 'click', {
+            'event_category': 'Portfolio Click',
+            'event_label': tag
+          });
+        });
+      });
+    });
+  </script>
+
 <body>
 
   <!-- ======= Mobile nav toggle button ======= -->
