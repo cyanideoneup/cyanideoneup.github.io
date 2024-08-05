@@ -162,10 +162,10 @@ h6 {
   margin-right: 0.5em;
 
   border-radius: 50%;
-  text-align: center;
   width: 1.5em;
   height: 1.5em;
   transition: 0.3s;
+  line-height: 1.7em;
 }
 
 #header .profile .social-links a:hover {
