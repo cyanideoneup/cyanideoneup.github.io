@@ -2,7 +2,7 @@ name: Update Website Screenshot
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: "0 * * * *"
   push:
 
 jobs:
@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v4
 
       - name: Take screenshot
         id: screenshot
         uses: swinton/screenshot-website@v1.x
         with:
-          source: https://cyanone.art
+          source: https://cyanone.art/portfolio
           destination: screenshot.png
           width: 800
           full-page: false
