@@ -1,1 +1,0 @@
-let graphData={graphOptions:{attractionForce:1,linkLength:10,repulsionForce:150,centralForce:3,edgePruning:100,minNodeRadius:3,maxNodeRadius:7},isInitialized:!0,paths:["general/other/test.html","general/secret/password.txt.html","index.html"],nodeCount:3,linkSources:[0,2],linkTargets:[1,0],labels:["test","password.txt","index"],radii:[7,6.4375,6.4375],linkCount:2}
