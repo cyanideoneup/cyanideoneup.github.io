@@ -22,6 +22,18 @@ jobs:
           full-page: false
           delay: 5
 
+      - name: Upload screenshot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-screenshot
+          path: screenshot.png
+
+      - name: Download screenshot artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: website-screenshot
+          path: temp-screenshot
+
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
@@ -30,7 +42,7 @@ jobs:
       - name: Move screenshot to assets/img directory
         run: |
           mkdir -p assets/img
-          mv screenshot.png assets/img/
+          mv temp-screenshot/screenshot.png assets/img/
 
       - name: Commit and push if there are changes
         run: |
