@@ -1,45 +1,50 @@
-name: Update Website Screenshot
+name: Update Screenshot
 
 on:
   schedule:
-    - cron: "0 * * * *"
-  push:
+    - cron: '0 * * * *' 
+  workflow_dispatch: 
 
 jobs:
-  update-screenshot:
+  take_screenshot:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
-      - name: Take screenshot
-        id: screenshot
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm install 
+
+      - name: Take Screenshot
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://cyanone.art/portfolio
           destination: screenshot.png
           width: 800
           full-page: false
-          delay: 5
+          delay: 10  
 
-      - name: Configure git
+      - name: Save Screenshot Path
+        run: echo "screenshot_path=screenshot.png" >> $GITHUB_ENV
+
+      - name: Commit and Push Changes
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: screenshot
-          path: .
-
-      - name: Move screenshot to assets/img directory
-        run: |
-          mkdir -p assets/img
-          mv screenshot.png assets/img/
-
-      - name: Commit and push if there are changes
-        run: |
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Update website screenshot" -a
+          git config --local user.email "you@example.com"  # Update with your email
+          git config --local user.name "Your Name"  # Update with your name
+          git add screenshot.png
+          git commit -m "Update screenshot"
           git push
+
+      - name: Notify if No Changes
+        run: |
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No changes to commit"
+          else
+            echo "Changes committed"
+          fi
