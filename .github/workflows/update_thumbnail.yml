@@ -18,19 +18,23 @@ jobs:
         with:
           source: https://cyanone.art/portfolio
           destination: screenshot.png
-          width: 800
+          width: 640
+          height: 360
           full-page: false
           delay: 5
+          
+      - name: List files
+        run: ls -la
+        
+      - name: Move screenshot to assets/img directory
+        run: |
+          mkdir -p assets/img
+          mv screenshot.png assets/img/
 
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Move screenshot to assets/img directory
-        run: |
-          mkdir -p assets/img
-          mv screenshot.png assets/img/
 
       - name: Commit and push if there are changes
         run: |
