@@ -12,23 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create assets/img directory
-        run: mkdir -p ${{ github.workspace }}/assets/img
+      - name: Take screenshot
+        uses: hakierspejs/jekyll-screenshot-github-action@master
+
+      - name: Move screenshot to assets/img directory
+        run: mv /home/runner/work/_temp/_github_home/screenshot.png ${{ github.workspace }}/assets/img/screenshot.png
 
       - name: List directory contents
         run: ls -al ${{ github.workspace }}/assets/img
-
-      - name: Print working directory
-        run: pwd
-
-      - name: Take screenshot
-        uses: imjohnbo/webpage-screenshot@v1
-        with:
-          url: https://cyanone.art/portfolio
-          path: ${{ github.workspace }}/assets/img/screenshot.png
-          width: 800
-          fullPage: false
-          waitFor: 5
 
       - name: Configure git
         run: |
