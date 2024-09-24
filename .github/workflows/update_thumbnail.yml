@@ -31,6 +31,9 @@ jobs:
           full-page: false
           delay: 5
 
+      - name: List _temp directory contents
+        run: ls -al /home/runner/work/_temp
+
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
