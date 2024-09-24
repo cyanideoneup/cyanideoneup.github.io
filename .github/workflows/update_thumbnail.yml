@@ -17,32 +17,15 @@ jobs:
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://cyanone.art/portfolio
-          destination: screenshot.png
+          destination: assets/img/screenshot.png 
           width: 800
           full-page: false
           delay: 5
-
-      - name: Upload screenshot artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshot
-          path: .
-
-      - name: Download screenshot artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: screenshot
-          path: temp-screenshot
 
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Move screenshot to assets/img directory
-        run: |
-          mkdir -p assets/img
-          mv temp-screenshot/screenshot.png assets/img/
 
       - name: Commit and push if there are changes
         run: |
