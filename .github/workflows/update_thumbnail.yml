@@ -6,36 +6,35 @@ on:
   push:
 
 jobs:
-  update-screenshot:
+  take_screenshot:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Take screenshot
-        id: screenshot
-        uses: swinton/screenshot-website@v1.x
-        with:
-          source: https://cyanone.art/portfolio
-          destination: screenshot.png
-          width: 640
-          height: 360
-          full-page: false
-          delay: 5
-          
-      - name: Download the screenshot
-        uses: actions/download-artifact@v4
-        with:
-          name: screenshot
-          path: ./assets/img
+        uses: actions/checkout@v3
         
+      # Set up Node.js
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install Puppeteer
+        run: |
+          npm install puppeteer
+
+      - name: Take screenshot of cyanone.art
+        run: |
+          node ./scripts/take-screenshot.js
+
       - name: Configure git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-
-      - name: Commit and push if there are changes
+      
+      - name: Commit and push screenshot
         run: |
-          git add .
-          git diff-index --quiet HEAD || git commit -m "Update website screenshot" -a
+          mv screenshot.png assets/img/screenshot.png
+          git add assets/img/screenshot.png
+          git commit -m "Update screenshot"
           git push
