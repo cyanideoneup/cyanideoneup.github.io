@@ -26,7 +26,7 @@ jobs:
       - name: Download the screenshot
         uses: actions/download-artifact@v4
         with:
-          name: screenshot.png
+          name: screenshot
           path: ./assets/img
         
       - name: Configure git
