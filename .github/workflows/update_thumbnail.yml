@@ -34,6 +34,7 @@ jobs:
 
       - name: Commit and push screenshot
         run: |
+          mkdir -p assets/img
           mv screenshot.png assets/img/screenshot.png
           git add assets/img/screenshot.png
           git commit -m "Update screenshot"
