@@ -12,12 +12,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create assets/img directory
+        run: mkdir -p ${{ github.workspace }}/assets/img
+
       - name: Take screenshot
         id: screenshot
         uses: swinton/screenshot-website@v1.x
         with:
           source: https://cyanone.art/portfolio
-          destination: assets/img/screenshot.png 
+          destination: ${{ github.workspace }}/assets/img/screenshot.png
           width: 800
           full-page: false
           delay: 5
