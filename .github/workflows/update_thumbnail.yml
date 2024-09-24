@@ -27,12 +27,6 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: screenshot
-          path: .
-
       - name: Move screenshot to assets/img directory
         run: |
           mkdir -p assets/img
