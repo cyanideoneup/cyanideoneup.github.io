@@ -22,17 +22,13 @@ jobs:
         run: pwd
 
       - name: Take screenshot
-        id: screenshot
-        uses: swinton/screenshot-website@v1.x
+        uses: adieuadieu/screenshot-action@v1
         with:
-          source: https://cyanone.art/portfolio
-          destination: ${{ github.workspace }}/assets/img/screenshot.png
+          url: https://cyanone.art/portfolio
+          filePath: ${{ github.workspace }}/assets/img/screenshot.png
           width: 800
-          full-page: false
-          delay: 5
-
-      - name: List _temp directory contents
-        run: ls -al /home/runner/work/_temp
+          fullPage: false
+          waitFor: 5
 
       - name: Configure git
         run: |
