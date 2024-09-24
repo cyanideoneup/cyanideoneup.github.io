@@ -22,10 +22,10 @@ jobs:
         run: pwd
 
       - name: Take screenshot
-        uses: adieuadieu/screenshot-action@v1
+        uses: imjohnbo/webpage-screenshot@v1
         with:
           url: https://cyanone.art/portfolio
-          filePath: ${{ github.workspace }}/assets/img/screenshot.png
+          path: ${{ github.workspace }}/assets/img/screenshot.png
           width: 800
           fullPage: false
           waitFor: 5
