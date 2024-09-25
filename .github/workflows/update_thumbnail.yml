@@ -2,7 +2,7 @@ name: Update Website Screenshot
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *" # Runs every hour
   push:
 
 jobs:
@@ -13,7 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
       - name: Set up Node.js environment
         uses: actions/setup-node@v3
         with:
@@ -32,10 +31,16 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Commit and push screenshot
+      - name: Check if screenshot has changed
         run: |
           mkdir -p assets/img
           mv screenshot.png assets/img/screenshot.png
+          git fetch origin
+          git diff --exit-code assets/img/screenshot.png || echo "Screenshot has changed"
+
+      - name: Commit and push screenshot if changed
+        if: ${{ success() && steps.screenshot_change.outcome == 'failure' }}
+        run: |
           git add assets/img/screenshot.png
           git commit -m "Update screenshot"
           git push
